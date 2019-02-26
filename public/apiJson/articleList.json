@@ -1,0 +1,17 @@
+{
+    "code":"000",
+    "message":"articleList",
+    "lists":[
+        {
+          "title":"文章title1",
+          "overview":"RxJava binding APIs for Android’s UI widgets. 学习的是 JakeWharton 的版本. 另外还有用于 mvvm 的 ogaclejapan 版本.",
+          "date": "2018/11/2"
+        },
+        {
+          "title":"文章title2",
+          "overview":"RxJava binding APIs for Android’s UI widgets. 学习的是 JakeWharton 的版本. 另外还有用于 mvvm 的 ogaclejapan 版本.",
+          "date":"2018/11/4"
+        }
+      ]
+}
+  

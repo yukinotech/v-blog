@@ -1,0 +1,58 @@
+.mainbody {
+  width: 100%;
+  background-image: url(/img/62351480_0.jpg);
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+  background-position: center;
+  text-align: center;
+}
+
+.loginbox {
+  margin: auto 0;
+  padding: 130px 0px 100px 0px ;
+  height: 500px;
+  width: 500px;
+  /* background-color: rgb(252, 251, 251); */
+  display: inline-block;
+
+}
+
+.loginform{
+    height: 200px;
+    width: 500px;
+    display: inline-block;
+    border: 1px solid black;
+    box-shadow: 0 0 10px rgba(14, 14, 14, 0.26);
+    background-color: rgb(252, 251, 251,0.5);
+}
+.loginform p{
+  margin: 10px 0 20px 0;
+}
+
+.loginform ul {
+    height: 200px;
+    width: 500px;
+    display: inline-block;
+  
+
+}
+.loginform ul li{
+    height: 60px;
+    width: 330px;
+    display: inline-block;
+    text-align:right;
+
+}
+.loginform ul li input[type=text]{
+  font-size: 25px;
+  height:30px;
+  width:250px;
+}
+.loginform ul li input[type=password]{
+  font-size: 25px;
+  height:30px;
+  width:250px;
+}
+
+
+

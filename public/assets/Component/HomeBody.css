@@ -1,0 +1,24 @@
+.mainbody{
+    width: 60%;
+    /* height: 12000px; */
+    margin:0 auto;
+    padding-top: 100px;
+    /* background-color: #74eb45; */
+}
+.left{
+    width: 73%;
+    /* background-color: #0f13d3; */
+    display: inline-block;
+    /* height: 1800px; */
+    float: left;
+}
+.right{
+    width: 27%;
+    background-color: #d30f39;
+    display: inline-block;
+    float: right;
+}
+
+.clear{
+    clear: both;
+  }

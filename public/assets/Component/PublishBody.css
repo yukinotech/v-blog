@@ -1,0 +1,34 @@
+.PublishBody{
+    width:60%;
+    margin: 0 auto;
+    /* height: 1000px; */
+    padding-top: 100px;
+}
+
+.left{
+    width:100%;
+}
+
+.articleInputTitle{
+    width:100%;
+    height:30px;
+}
+
+.articleInputText{
+    textAlign: 'left';
+    width:100%;
+    margin-top: 10px;
+}
+
+.button{
+    float:right;
+    text-align: center;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    height: 30px;
+    line-height: 28px;
+    width: 72px;
+    color: #fff ;
+    border: 1px solid #337ab7 ;
+    background-color: #337ab7 ;
+}

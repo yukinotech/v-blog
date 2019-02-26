@@ -1,0 +1,56 @@
+.mainbody {
+    width: 100%;
+    background-image: url(/img/62351480_1.jpg);
+    background-size:100% 100%;
+    background-repeat:no-repeat;
+    background-position: center;
+    text-align: center;
+}
+
+.registerbox {
+    margin: auto 0;
+    padding: 130px 0px 100px 0px ;
+    height: 500px;
+    width: 700px;
+    /* background-color: rgb(209, 24, 24); */
+    display: inline-block;
+  
+}
+
+.registerbox ul   {
+   /* padding: 0 50px 0 150px; */
+   height: 500px;
+   width: 600px; 
+   display: inline-block;
+}
+
+.registerbox ul li  {
+    width: 500px;
+    height:40px;
+    text-align:right; /* 这句话是对齐的关键 */
+}
+.registerbox ul li.tipli {
+    width:500px;
+    height:20px;
+    text-align:left; /* 这句话是对齐的关键 */
+}
+.registerbox ul li input[type=text]{
+    font-size: 25px;
+    height:30px;
+    width:300px;
+
+}
+.registerbox ul li input[type=password]{
+    font-size: 25px;
+    height:30px;
+    width:300px;
+}
+
+.tipspanLegal{
+    margin-left: 196px;
+    color: aquamarine;
+}
+.tipspanIllegal{
+    margin-left: 196px;
+    color:red;
+}

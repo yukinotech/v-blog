@@ -1,0 +1,72 @@
+.header {
+  height: 50px;
+  width: 100%;
+  /* background-color: rgb(99, 190, 25); */
+  position: relative;
+  box-shadow: 0 0 10px rgba(14, 14, 14, 0.26);
+}
+.avatar {
+  width: 50px;
+  height: 50px;
+  /* background-color: rgb(16, 168, 238); */
+  position: absolute;
+  left: 20%;
+  text-align: center;
+  line-height: 50px;
+}
+.avatar img {
+  height: 50px;
+}
+.title {
+  width: 310px;
+  height: 50px;
+  /* background-color: rgb(138, 25, 190); */
+  position: absolute;
+  left: 25%;
+  text-align: center;
+  line-height: 50px;
+}
+.nav {
+  width: 500px;
+  height: 50px;
+  /* background-color: rgb(26, 223, 42); */
+  position: absolute;
+  left: 50%;
+  text-align: center;
+  line-height: 50px;
+}
+.nav li a{
+  float: left;
+  width: 100px;
+  height: 50px;
+  /* background-color: rgb(219, 26, 26); */
+}
+.user {
+  width: 150px;
+  height: 50px;
+  /* background-color: rgb(102, 26, 223); */
+  position: absolute;
+  left: 85%;
+  text-align: center;
+  line-height: 50px;
+  color: rgb(134, 129, 129);
+}
+
+.user ul li {
+  float: left;
+  height: 50px;
+  width: 50px;
+  /* background-color: rgb(194, 63, 63); */
+}
+
+.user ul li:nth-child(2){
+  height: 50px;
+  width: 20px;
+  /* background-color: rgb(27, 153, 16); */
+}
+
+.user ul li a{
+  width:50px;
+  height: 50px;
+  /* display: inline-block; */
+}

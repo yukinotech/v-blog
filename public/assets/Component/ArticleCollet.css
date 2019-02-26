@@ -1,0 +1,8 @@
+.box{
+    margin-bottom: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05);
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}

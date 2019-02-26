@@ -1,0 +1,62 @@
+/* @font-face {
+    font-family: 'octicons';
+    src: url('octicons.eot?#iefix') format('embedded-opentype'),
+         url('octicons.woff') format('woff'),
+         url('octicons.ttf') format('truetype'),
+         url('octicons.svg#octicons') format('svg');
+    font-weight: normal;
+    font-style: normal;
+} */
+
+.article_item{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #eee;
+}
+
+.title {
+    font-size:30px;
+    font-weight:500;
+    line-height:1.1;
+    margin-top:20px;
+    margin-bottom: 10px;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+
+.title a{
+    color: #337ab7;
+}
+
+.overview{
+    margin-top: 8px;
+    margin-bottom: 0;
+    font-size: 18px;
+    color: #666;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+
+.date{
+    font-size: 18px;
+    margin-top: 8px;
+    margin-bottom: 0;
+    color: #888;
+}
+
+/* .icon{
+    content: '\f068';
+    font: normal normal normal 16px/1 octicons;
+    display: inline-block;
+    text-decoration: none;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+} */
+
