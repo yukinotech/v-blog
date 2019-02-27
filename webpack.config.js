@@ -50,6 +50,31 @@ module.exports = {
                     localIdentName: '[name]__[local]--[hash:base64:5]'
                 }
             }]
+        },{
+            test: /\.css$/,
+            include: path.resolve(__dirname, 'public/highlightCss'),
+            use: [{
+                loader: 'style-loader'
+            }, {
+                loader: 'css-loader',
+                options: {
+                    modules: true,
+                    localIdentName: '[local]'
+                }
+            }]
+        }, {
+        },{
+            test: /\.css$/,
+            include: path.resolve(__dirname, 'node_modules'),
+            use: [{
+                loader: 'style-loader'
+            }, {
+                loader: 'css-loader',
+                options: {
+                    modules: true,
+                    localIdentName: '[local]'
+                }
+            }]
         }, {
             test: /\.(png|jpg|jpeg|svg)$/,
             exclude: /node_modules/,

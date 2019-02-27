@@ -1,7 +1,32 @@
-import React from "react";
 import style from "./PublishBody.css";
+import marked from "marked";
 import $ from "jquery";
-import E from "wangeditor";
+import hljs from "highlight.js";
+import React from "react";
+import javascript from "highlight.js/lib/languages/javascript";
+hljs.registerLanguage("javascript", javascript);
+import "../../highlightCss/hljsClass.css";
+import "../../highlightCss/markdownCode.css";
+
+
+marked.setOptions({
+  renderer: new marked.Renderer(),
+  highlight: function(code) {
+    return hljs.highlight("javascript", code).value;
+  },
+  pedantic: false,
+  gfm: true,
+  tables: true,
+  breaks: false,
+  sanitize: false,
+  smartLists: true,
+  smartypants: false,
+  xhtml: false
+});
+
+
+
+
 
 class PublishBody extends React.Component {
   constructor(props) {
@@ -13,10 +38,13 @@ class PublishBody extends React.Component {
         text: "",
         overview: "",
         date: new Date()
+      },
+      preview:{
       }
     };
     this.HaddleSubmit = this.HaddleSubmit.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
+    this.handleTextChange = this.handleTextChange.bind(this);
   }
 
   handleTitleChange(e) {
@@ -25,6 +53,7 @@ class PublishBody extends React.Component {
     this.setState({
       data: data
     });
+    console.log(this.state.data)
   }
   HaddleSubmit(e) {
     var data = {};
@@ -63,22 +92,16 @@ class PublishBody extends React.Component {
 
     e.preventDefault();
   }
-
+  handleTextChange(e){
+    let val =e.target.value;
+    let data = Object.assign({},this.state.data,{text:val})
+    this.setState({
+      data: data
+    });
+    console.log(this.state.data)
+  }
   componentDidMount() {
-    const elem = this.refs.editorElem;
-    const editor = new E(elem);
-    this.editor = editor;
-    // 使用 onchange 函数监听内容的变化，并实时更新到 state 中
-    editor.customConfig.onchange = html => {
-      let data = Object.assign({}, this.state.data, { text: html });
-      this.setState({
-        data: data
-      });
-    };
 
-    editor.create();
-
-    editor.$textElem[0].parentNode.style.height = "400px";
   }
   render() {
     return (
@@ -91,11 +114,19 @@ class PublishBody extends React.Component {
               value={this.state.data.title}
               onChange={this.handleTitleChange}
             />
-            <div ref="editorElem" className={style.articleInputText} />
+            <textarea
+              onChange={this.handleTextChange}
+              value={this.state.data.value}
+              className={style.articleInputText}
+            />
             <input type="submit" className={style.button} value="提交" />
           </form>
         </div>
-        <div className={style.right} />
+        <div className={style.right}>
+            <h2>{this.state.data.title}</h2>
+            <div dangerouslySetInnerHTML={{ __html: marked(this.state.data.text)}} className='markdown'></div>
+        </div>
+        <div className={style.clear}></div>
       </div>
     );
   }
