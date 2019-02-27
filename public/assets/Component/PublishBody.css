@@ -100,9 +100,10 @@
     display: block;
     outline: none;
     box-sizing:border-box;
-    min-height: 100%;
+    /* min-height: 100%; */
     height:calc(100vh - 120px);
     background: #d1e0d1;
+    resize:none 
     /* margin-top: 10px; */
     /* border: #337ab7 1px solid */
 }
