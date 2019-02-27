@@ -5,8 +5,9 @@ import hljs from "highlight.js";
 import React from "react";
 import javascript from "highlight.js/lib/languages/javascript";
 hljs.registerLanguage("javascript", javascript);
-import "../../highlightCss/hljsClass.css";
-import "../../highlightCss/markdownCode.css";
+import "../../directOutPutCss/hljsClass.css";
+import "../../directOutPutCss/markdownCode.css";
+import "../../directOutPutCss/font-awesome/css/font-awesome.min.css"
 
 
 marked.setOptions({
@@ -17,7 +18,7 @@ marked.setOptions({
   pedantic: false,
   gfm: true,
   tables: true,
-  breaks: false,
+  breaks: true,
   sanitize: false,
   smartLists: true,
   smartypants: false,
@@ -114,16 +115,21 @@ class PublishBody extends React.Component {
               value={this.state.data.title}
               onChange={this.handleTitleChange}
             />
+            <ul className={style.editorNav}>
+              <li className={style.floatright}><i className={"fa fa-mail-forward "+style.submit_i}></i><span className={style.submit_span}>发布文章</span></li>
+              <li className={style.floatright}><i className="fa fa-save"></i></li>
+              <input type="submit" className={style.button} value=" " />
+            </ul>
             <textarea
               onChange={this.handleTextChange}
               value={this.state.data.value}
               className={style.articleInputText}
             />
-            <input type="submit" className={style.button} value="提交" />
+            
           </form>
         </div>
         <div className={style.right}>
-            <h2>{this.state.data.title}</h2>
+            <h1 className={style.h1preview}>{this.state.data.title}</h1>
             <div dangerouslySetInnerHTML={{ __html: marked(this.state.data.text)}} className='markdown'></div>
         </div>
         <div className={style.clear}></div>

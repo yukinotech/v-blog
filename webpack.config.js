@@ -52,7 +52,7 @@ module.exports = {
             }]
         },{
             test: /\.css$/,
-            include: path.resolve(__dirname, 'public/highlightCss'),
+            include: path.resolve(__dirname, 'public/directOutPutCss'),
             use: [{
                 loader: 'style-loader'
             }, {
@@ -83,6 +83,15 @@ module.exports = {
                 options: {
                     limit: 8192,
                     name: 'img/[hash].[name].[ext]'
+                }
+            }]
+        },{
+            test: /\.(eot|svg|ttf|woff|woff2)$/,
+            exclude: /node_modules/,
+            use: [{
+                loader: 'url-loader',
+                options: {
+                    limit: 1000000
                 }
             }]
         }]

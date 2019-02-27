@@ -2,22 +2,76 @@
     width:100%;
     margin: 0 auto;
     /* height: 1000px; */
-    padding-top: 100px;
+    /* padding-top: 100px; */
 }
 
 .left{
     float: left;
     width: 50%;
     box-sizing:border-box;
+    overflow-y: auto;
+    height: 100%;
 }
 
 .right{
+    
     float: right;
     width: 50%;
-    box-sizing:border-box;
+    height: calc(100vh - 50px);
+    overflow-y: auto;
+    color: #333;
+    background-color: #fcfaf2;
+    padding: 10px 5% 80px;
+    font-size: 16px;
+    line-height: 1.75;
+    box-sizing: border-box;
 }
 .clear {
     clear: both;
+}
+.editorNav{
+    widows: 100%;
+    background-color: #d9d9d9;
+    border-bottom: 1px solid #ccc;
+}
+.editorNav:before,.editorNav:after {
+    content: " ";
+    display: table;
+}
+.editorNav:after {
+    clear: both;
+    visibility: hidden;
+    font-size: 0;
+    height: 0;
+}
+.editorNav li{
+    font-size: 13px;
+    float: left;
+    text-align: center;
+}
+.editorNav li:hover{
+    background-color: rgba(63, 58, 58, 0.445);
+}
+.editorNav li i{
+    color: #595959;
+    padding: 11px 14px;
+    display: inline-block;
+    line-height: 17px;
+    height: 17px;
+}
+.editorNav li .submit_i{
+    padding: 11px 0px 11px 10px;
+}
+.submit_span{
+    padding: 11px 10px 11px 1px;
+}
+.h1preview{
+    /* height: 100px; */
+    box-sizing: border-box;
+    padding: 0px 0px 30px 0px;
+}
+.editorNav .floatright{
+    float: right;
 }
 .articleInputTitle{
     width: 100%;
@@ -28,20 +82,33 @@
     line-height: 30px;
     box-shadow: none;
     color: #595959;
+    outline: none;
+    box-sizing: border-box;
+    height: 30px;
 }
 
 .articleInputText{
     textAlign: 'left';
     width:100%;
-    height: 400px;
-    
-    margin-top: 10px;
-    border: #337ab7 1px solid
+    padding: 40px 12% 80px;
+    color: #333;
+    background-color: transparent;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+    border: none;
+    display: block;
+    outline: none;
+    box-sizing:border-box;
+    min-height: 100%;
+    height:calc(100vh - 120px);
+    background: #d1e0d1;
+    /* margin-top: 10px; */
+    /* border: #337ab7 1px solid */
 }
 
 .button{
-    float:right;
-    text-align: center;
+    /* text-align: center;
     margin-top: 6px;
     margin-bottom: 6px;
     height: 30px;
@@ -49,7 +116,8 @@
     width: 72px;
     color: #fff ;
     border: 1px solid #337ab7 ;
-    background-color: #337ab7 ;
+    background-color: #337ab7 ; */
+    display: none;
 }
 
 #code{

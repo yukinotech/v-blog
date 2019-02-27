@@ -22,3 +22,12 @@ a:hover, a:visited, a:link, a:active {
 ul li{
     list-style: none;
 }
+html,body{
+    height: 100%
+}
+#root{
+    height: 100%
+}
+#root>div{
+    height: 100%
+}
