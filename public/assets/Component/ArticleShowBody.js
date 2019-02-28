@@ -36,21 +36,21 @@ class ArticleShowBody extends React.Component {
         overview: "",
         date: "",
         author:""
-      }
+      },
     };
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-     data: nextProps.articleData
+     data: nextProps.articleData,
     });
    }
   componentWillMount() {
     this.setState({data:this.props.articleData})
   }
-  changeArticle(){
-    this.props.changeState()
-  }
+  // changeArticle(){
+  //   this.props.changeState()
+  // }
   render() {
     var htmlcode={__html:marked(this.state.data.text)}
     return (
@@ -65,7 +65,7 @@ class ArticleShowBody extends React.Component {
                 <span className={style.publishtime}>{new Date(this.state.data.date).toLocaleString()}</span>
               </div>
             </div>
-            <a href="" className={style.edit}>修改文章</a>
+            {this.props.isauthor?<a href="" className={style.edit}>修改文章</a>:null}
           </div>
           {/* <p>最后一次发布时间:{new Date(this.state.data.date).toLocaleString()}</p>
           <p>作者:{this.state.data.author}</p>

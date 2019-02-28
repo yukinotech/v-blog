@@ -21,7 +21,8 @@ class ArticleShow extends React.Component {
         overview: "11",
         date: "11",
         author: "11"
-      }
+      },
+      isauthor:false
     };
 
     this.geturl = this.geturl.bind(this);
@@ -38,6 +39,20 @@ class ArticleShow extends React.Component {
       crossDomain: true,
       success: data => {
         that.setState({ pagestate: "show", data: data[0] });
+        $.ajax({
+          url: "/getUsername",
+          dataType: "json",
+          cache: false,
+          crossDomain: true,
+          success: data => {
+            if (data === that.state.data.author) {
+              console.log('true')
+              that.setState({isauthor:true})
+            }else{
+              console.log('false')
+            }
+          }
+        });
       }
     });
   }
@@ -48,25 +63,25 @@ class ArticleShow extends React.Component {
     console.log(this.articleID);
   }
 
-  changePageState() {
-    $.ajax({
-      url: "/getUsername",
-      dataType: "json",
-      cache: false,
-      crossDomain: true,
-      success: data => {
-        if (data === this.state.data.author) {
-          if (this.state.pagestate === "show") {
-            this.setState({
-              pagestate: "change"
-            });
-          }
-        }else{
-          alert('没有权限，操作失败')
-        }
-      }
-    });
-  }
+  // changePageState() {
+  //   $.ajax({
+  //     url: "/getUsername",
+  //     dataType: "json",
+  //     cache: false,
+  //     crossDomain: true,
+  //     success: data => {
+  //       if (data === this.state.data.author) {
+  //         if (this.state.pagestate === "show") {
+  //           this.setState({
+  //             pagestate: "change"
+  //           });
+  //         }
+  //       }else{
+  //         alert('没有权限，操作失败')
+  //       }
+  //     }
+  //   });
+  // }
   render() {
     if (this.state.pagestate === "show") {
       return (
@@ -74,20 +89,22 @@ class ArticleShow extends React.Component {
           <Header />
           <ArticleShowBody
             articleData={this.state.data}
-            changeState={this.changePageState}
+            // changeState={this.changePageState}
+            isauthor={this.state.isauthor}
           />
           <Footer />
         </div>
       );
-    } else if (this.state.pagestate === "change") {
-      return (
-        <div>
-          <Header />
-          <ChangeArticleBody articleData={this.state.data} />
-          <Footer />
-        </div>
-      );
-    }
+    } 
+    // else if (this.state.pagestate === "change") {
+    //   return (
+    //     <div>
+    //       <Header />
+    //       <ChangeArticleBody articleData={this.state.data} />
+    //       <Footer />
+    //     </div>
+    //   );
+    // }
   }
 }
 
