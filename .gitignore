@@ -1,4 +1,5 @@
 node_modules
 dist
-.zip
+*.zip
 think
+开发过程中组件替换
