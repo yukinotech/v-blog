@@ -46,6 +46,7 @@ class PublishBody extends React.Component {
     this.HaddleSubmit = this.HaddleSubmit.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleTextChange = this.handleTextChange.bind(this);
+    this.clickToSubmit = this.clickToSubmit.bind(this);
   }
 
   handleTitleChange(e) {
@@ -61,14 +62,14 @@ class PublishBody extends React.Component {
     data["title"] = this.state.data.title;
     data["date"] = new Date();
 
-    var overview = this.editor.txt.text();
-    var length = overview.length < 120 ? overview.length : 120;
-    overview = overview.slice(0, length - 1);
-    console.log(overview);
-    data["overview"] = overview;
+    // var overview = this.editor.txt.text();
+    // var length = overview.length < 120 ? overview.length : 120;
+    // overview = overview.slice(0, length - 1);
+    // console.log(overview);
+    // data["overview"] = overview;
 
-    var text = this.editor.txt.html();
-    data["text"] = text;
+    // var text = this.editor.txt.html();
+    data["text"] = this.state.data.text;
     console.log(data);
     var newArticleID = "dd";
     $.ajax({
@@ -101,6 +102,10 @@ class PublishBody extends React.Component {
     });
     console.log(this.state.data)
   }
+  clickToSubmit(e){
+    this.HaddleSubmit()
+
+  }
   componentDidMount() {
 
   }
@@ -116,7 +121,7 @@ class PublishBody extends React.Component {
               onChange={this.handleTitleChange}
             />
             <ul className={style.editorNav}>
-              <li className={style.floatright}><i className={"fa fa-mail-forward "+style.submit_i}></i><span className={style.submit_span}>发布文章</span></li>
+              <li className={style.floatright} onClick={this.clickToSubmit}><i className={"fa fa-mail-forward "+style.submit_i}></i><span className={style.submit_span}>发布文章</span></li>
               <li className={style.floatright}><i className="fa fa-save"></i></li>
               <input type="submit" className={style.button} value=" " />
             </ul>
