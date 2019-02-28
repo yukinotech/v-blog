@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./ArticleShowBody.css";
 import ArticleCollet from "./ArticleCollet.js"
+import $ from 'jquery'
 
 import marked from "marked";
 import hljs from "highlight.js";
@@ -38,6 +39,7 @@ class ArticleShowBody extends React.Component {
         author:""
       },
     };
+    this.deleteArticle=this.deleteArticle.bind(this)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -47,6 +49,28 @@ class ArticleShowBody extends React.Component {
    }
   componentWillMount() {
     this.setState({data:this.props.articleData})
+  }
+  deleteArticle(){
+    $.ajax({
+      type: "POST",
+      url: '/articleDelete/'+this.state.data._id,
+      dataType: "json",
+      cache: false,
+      crossDomain: true,
+      success: data => {
+        if (data) {
+          console.log(data)
+          if(data==='delete_success'){
+            alert('删除成功')
+            window.location.href='/'
+          }
+          
+        }else{
+          console.log('ajax false')
+        }
+      }
+    });
+    
   }
   // changeArticle(){
   //   this.props.changeState()
@@ -65,7 +89,8 @@ class ArticleShowBody extends React.Component {
                 <span className={style.publishtime}>{new Date(this.state.data.date).toLocaleString()}</span>
               </div>
             </div>
-            {this.props.isauthor?<a href={"/articleChange?articleID="+this.state.data._id} className={style.edit}>修改文章</a>:null}
+            {this.props.isauthor?<a onClick={this.deleteArticle} href="javascript:0" className={style.edit}>删除文章</a>:null}
+            {this.props.isauthor?<a  href={"/articleChange?articleID="+this.state.data._id} className={style.delete}>修改文章</a>:null}
           </div>
           {/* <p>最后一次发布时间:{new Date(this.state.data.date).toLocaleString()}</p>
           <p>作者:{this.state.data.author}</p>
@@ -76,7 +101,7 @@ class ArticleShowBody extends React.Component {
           {this.props.articleID}
         </div>
         <div className={style.right}>
-          {/* <ArticleCollet ></ArticleCollet>  */}
+          <ArticleCollet ></ArticleCollet> 
         </div>
         <div className={style.clear}></div>
       </div>

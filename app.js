@@ -4,6 +4,8 @@ var bodyParser = require("body-parser");
 // var logger = require('morgan');
 var path = require("path");
 
+
+
 const webpack = require("webpack");
 const webpackMiddleware = require("webpack-dev-middleware");
 let webpackConf = require("./webpack.config.js");
@@ -89,12 +91,18 @@ app.get("/blog", blog.list);
 app.post("/blogCreatArticle", blog.add);
 app.get("/Article/:id", blog.get);
 app.post("/blogChangeArticle/:id", blog.change);
+app.post('/articleDelete/:id',blog.delete)
 
 //设置用户增删改查api
 app.post("/createAccount", user.register);
 app.post("/login", user.login);
 app.get("/getUsername", user.getUsername);
 app.get("/logout", user.logout);
+
+//分页部分
+// app.get("/page/:id")
+
+
 
 //设置返回界面
 app.get("/show", function(req, res) {

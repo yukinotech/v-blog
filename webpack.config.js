@@ -7,6 +7,9 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 //引入webpack模块，ProvidePlugin是webpack身上的一个插件
 const webpack=require('webpack'); 
 
+//压缩代码模块
+const UglifyJsPlugin=require('uglifyjs-webpack-plugin');
+
 module.exports = {
     entry: {
         index: './public/assets/index.js',
@@ -144,6 +147,18 @@ module.exports = {
     //         }
     //     }
     // },
+    // optimization: {
+    //     minimizer: [
+    //         new UglifyJsPlugin({
+    //             uglifyOptions: {
+    //                 compress: false
+    //             }
+    //         })
+    //     ]
+    // },
+    externals: {
+        "jquery":"jQuery"
+    },
     devServer: {
         contentBase: path.join(__dirname, 'public'),
         compress: true,

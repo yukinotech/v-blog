@@ -12,6 +12,8 @@ var mongoose = require("mongoose");
 var db1 = mongoose.createConnection("mongodb://127.0.0.1:27017/blog"); // 链接数据库
 var article = db1.model("article", articleSchema);
 
+
+//查询全部文章
 exports.list = function(req, res) {
   article.find(function(err, article) {
     // console.log(article);
@@ -20,6 +22,7 @@ exports.list = function(req, res) {
   });
 };
 
+//查询单个文章
 exports.get = function(req, res) {
   console.log(req.session);
 
@@ -33,17 +36,50 @@ exports.get = function(req, res) {
   });
 };
 
-// exports.delete = function(req, res){
-//   Comment.remove({_id: req.params.id},function (err) {
-//     if (err) {
-//       console.log(err);
-//     };
-//     Comment.find(function (err, comment) {
-//       res.json(comment);
-//     });
-//   });
-// };
+//删除单个文章
+exports.delete = function(req, res){
+  if(req.session.username){
+    let author=req.session.username
+    console.log(req.params)
+    article.find({ _id: req.params.id }, function(err, articleItemList) {
+      if (err) {
+        console.log("查询文章错误！");
+        res.json('database_error')
+      }
+      else{
+          if(author===articleItemList[0].author && articleItemList.length===1){
+              console.log(articleItemList);
+              article.remove({_id: req.params.id}, function(err){
+                if (err) {
+                  console.log("删除文章错误！");
+                  res.json('database_error')
+                }
+                else{
+                  res.json('delete_success')
+                }
+              })
+          }
+          else{
+             res.json('noPermission_error');
+          }
+         
+      }
+    });
+  }
+  else{
+    res.json('no_login')
+  }
+  // Comment.remove({_id: req.params.id},function (err) {
+  //   if (err) {
+  //     console.log(err);
+  //   };
+  //   Comment.find(function (err, comment) {
+  //     res.json(comment);
+  //   });
+  // });
+};
 
+//添加一个新文章
 exports.add = function(req, res) {
   if (
     !(
@@ -70,6 +106,7 @@ exports.add = function(req, res) {
     res.json("no_login");
   }
 };
+
 
 exports.change = function(req, res) {
   if (

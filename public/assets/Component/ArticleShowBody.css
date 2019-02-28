@@ -12,7 +12,7 @@
 }
 .right{
     width: 27%;
-    background-color: #d30f39;
+    /* background-color: #d30f39; */
     float: right;
 }
 .clear{
@@ -65,6 +65,24 @@
     color: #9b9b9b;
     line-height: 30px;
     border-radius: 50px;
+}
+.edit:hover{
+  background: rgba(4, 104, 255, 0.849);
+  color: aliceblue
+}
+.delete{
+  float: right;
+  margin-top: 8px;
+  padding: 0 12px;
+  font-size: 14px;
+  border: 1px solid #dcdcdc;
+  color: #9b9b9b;
+  line-height: 30px;
+  border-radius: 50px;
+}
+.delete:hover{
+  background: rgba(255, 4, 4, 0.678);
+  color: aliceblue
 }
 .textcontainner{
   /* background-color: #fcfaf2; */

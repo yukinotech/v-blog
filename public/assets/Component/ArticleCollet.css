@@ -1,8 +1,31 @@
 .box{
     margin-bottom: 8px;
-    background-color: #fff;
+    background-color: rgb(231, 230, 230);
     box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05);
     overflow:hidden;
     white-space:nowrap;
     text-overflow:ellipsis;
+    padding: 20px 20px;
+   
+}
+.boxtitle{
+    font-size: 17px;
+    line-height: 17px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+.li_item{
+    line-height: 14px;
+    height: 25px;
+    box-sizing: border-box;
+    padding: 2px 2px
+}
+.li_item::before{
+    content: "\00BB \0020";
+}
+.li_item a:hover{
+color:rgb(11, 55, 248)
+}
+.li_item a{
+color:rgb(96, 111, 179)
 }

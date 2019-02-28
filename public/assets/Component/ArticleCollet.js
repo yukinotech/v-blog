@@ -33,7 +33,7 @@ class ArticleCollet extends React.Component {
     return (
       <div>
         <div className={style.box}>
-          <h3>最新文章</h3>
+          <h2 className={style.boxtitle}>最新文章</h2>
           <div className={style.content}>
             <ul>{listItems}</ul>
           </div>
@@ -49,7 +49,7 @@ class AritcleItemlist extends React.Component {
   }
   render() {
     return (
-      <li>
+      <li className={style.li_item}>
         <a href={'/show?articleID=' + this.props.altItem._id}>
           {this.props.altItem.title}
         </a>

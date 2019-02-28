@@ -14,7 +14,7 @@
 }
 .right{
     width: 27%;
-    background-color: #d30f39;
+    /* background-color: #d30f39; */
     display: inline-block;
     float: right;
 }

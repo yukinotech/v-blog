@@ -50,7 +50,8 @@ class Listitem extends React.Component {
     return ( 
       <li className={style.article_item}>
         <h2 className={style.title}><a href={'/show?articleID='+this.props.altItem._id}>{this.props.altItem.title}</a></h2>
-        <p className={style.overview}>{this.props.altItem.overview+'......'}</p>
+        <div className={style.info}></div>
+        {/* <p className={style.overview}>{this.props.altItem.overview+'......'}</p> */}
         <p className={style.date}><span className={style.icon}></span>{new Date(this.props.altItem.date).toLocaleString()}</p>
       </li>
     );

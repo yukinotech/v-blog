@@ -101,7 +101,7 @@ class Header extends React.Component {
         </div>
         <ul className={style.nav}>
           <li>
-            <a href="/index.html">Home</a>
+            <a href="/">Home</a>
           </li>
           <li>
             <a href="/publish.html">发布文章</a>
