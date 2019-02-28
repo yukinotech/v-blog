@@ -26,7 +26,7 @@ class ArticleShow extends React.Component {
     };
 
     this.geturl = this.geturl.bind(this);
-    this.changePageState = this.changePageState.bind(this);
+
   }
   componentWillMount() {
     this.geturl();

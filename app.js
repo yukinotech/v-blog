@@ -101,6 +101,10 @@ app.get("/show", function(req, res) {
   res.sendFile(path.join(__dirname, "dist/ArticleShow.html"));
 });
 
+app.get("/articleChange", function(req, res) {
+  res.sendFile(path.join(__dirname, "dist/ChangeArticle.html"));
+});
+
 app.listen(app.get("port"), function() {
   console.log("app has run on server:", app.get("port"));
 });

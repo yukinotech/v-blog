@@ -56,7 +56,7 @@ class ArticleShowBody extends React.Component {
     return (
       <div className={style.mainbody}>
         <div className={style.left}>
-          <h1 className={style.title}>{this.state.data.title}</h1>
+          <h1 className={style.title}>标题:{this.state.data.title}</h1>
           <div className={style.author}>
             <a className={style.avatar} href=""><img src={imgitem} alt=""/></a>
             <div className={style.info}>
@@ -65,7 +65,7 @@ class ArticleShowBody extends React.Component {
                 <span className={style.publishtime}>{new Date(this.state.data.date).toLocaleString()}</span>
               </div>
             </div>
-            {this.props.isauthor?<a href={"/articleChange?articleID="+this.state.data._id} className={style.edit}>修改文章</a>:null}
+            {this.props.isauthor?<a href="" className={style.edit}>修改文章</a>:null}
           </div>
           {/* <p>最后一次发布时间:{new Date(this.state.data.date).toLocaleString()}</p>
           <p>作者:{this.state.data.author}</p>
@@ -76,7 +76,7 @@ class ArticleShowBody extends React.Component {
           {this.props.articleID}
         </div>
         <div className={style.right}>
-          {/* <ArticleCollet ></ArticleCollet>  */}
+          <ArticleCollet ></ArticleCollet> 
         </div>
         <div className={style.clear}></div>
       </div>

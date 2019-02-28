@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactDOM from "react-dom";
 import '../css/main.css'
 import Header from './Component/Header.js'
 import Footer from './Component/Footer.js'
@@ -14,9 +15,11 @@ class ChangeArticle extends React.Component {
   }
   geturl(){
     let url=window.location.href
+    console.log(url)
     let urlitem=url.split('?')[1]
     this.articleID = urlitem.split('=')[1]
-    console.log(this.articleID)
+    console.log('ChangeArticle '+this.articleID)
+    console.log('ChangeArticle ')
   }
     render() {
       return (
