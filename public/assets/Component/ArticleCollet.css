@@ -18,7 +18,8 @@
     line-height: 14px;
     height: 25px;
     box-sizing: border-box;
-    padding: 2px 2px
+    padding: 2px 2px;
+    overflow: hidden;
 }
 .li_item::before{
     content: "\00BB \0020";
