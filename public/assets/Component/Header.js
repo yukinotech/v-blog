@@ -68,7 +68,8 @@ class Header extends React.Component {
     let UserLoginHeader = ()=> {
       return (
         <ul>
-          <li>你好，<a href="#">{this.state.username}</a></li>
+          <li><a href="#">{this.state.username}</a></li>
+          <li>你好，</li>
           <li>|</li>
           <li>
             <a href="#" onClick={this.logout}>登出</a>
