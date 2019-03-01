@@ -130,7 +130,7 @@ module.exports = {
             template: './public/Register.html',
             inject: false,
         }),
-        new ExtractTextPlugin("css/styles.css"),
+        new ExtractTextPlugin("css/styles.css")
         // new webpack.ProvidePlugin({ //它是一个插件，所以需要按插件的用法new一个
         //     react:'react',    //接收名字:模块名
         //     reactDom:'react-dom',
@@ -157,8 +157,9 @@ module.exports = {
     //     ]
     // },
     externals: {
-        "jquery":"jQuery",
-        "marked":"marked"
+        jquery:"jQuery",
+        marked:"marked",
+        "highlight.js":'hljs'
     },
     devServer: {
         contentBase: path.join(__dirname, 'public'),

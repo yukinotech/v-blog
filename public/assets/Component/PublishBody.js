@@ -3,10 +3,9 @@ import marked from "marked";
 import $ from "jquery";
 import hljs from "highlight.js";
 import React from "react";
-import javascript from "highlight.js/lib/languages/javascript";
-hljs.registerLanguage("javascript", javascript);
-import "../../directOutPutCss/hljsClass.css";
-import "../../directOutPutCss/markdownCode.css";
+import '../../directOutPutCss/hljsClass.css'
+import '../../directOutPutCss/markdownCode.css'
+
 
 
 

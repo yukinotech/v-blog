@@ -6,8 +6,8 @@ import $ from 'jquery'
 import marked from "marked";
 import hljs from "highlight.js";
 import imgitem from "../../img/62351480_0.jpg"
-import "../../directOutPutCss/hljsClass.css";
-import "../../directOutPutCss/markdownCode.css";
+import '../../directOutPutCss/hljsClass.css'
+import '../../directOutPutCss/markdownCode.css'
 
 
 marked.setOptions({
