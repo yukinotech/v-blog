@@ -63,17 +63,17 @@ app.use(cookieParser("secret")); //和session中间件的secert字段保持一�
 var compiler = webpack(webpackConf);
 
 //生产模式下不使用webpack中间件
-app.use(
-  webpackMiddleware(compiler, {
-    publicPath: webpackConf.output.publicPath
-  })
-);
+// app.use(
+//   webpackMiddleware(compiler, {
+//     publicPath: webpackConf.output.publicPath
+//   })
+// );
 
 // 将静态资源挂载在服务器的端口上
 // 使用public为开发模式，此时app.js运行的express是上线的后端负责api请求和数据库连接，注意webpack-dev-server也应开启，在线热更新
-app.use(express.static(path.join(__dirname, "public")));
+// app.use(express.static(path.join(__dirname, "public")));
 // 使用dist为生产模式，可以删掉public,和package里面的dev开发所需模块，注意dist文件夹为webpack编译所生成
-// app.use(express.static(path.join(__dirname, "dist")));
+app.use(express.static(path.join(__dirname, "dist")));
 
 // 允许跨域
 // app.all("*", function(req, res, next) {
@@ -112,6 +112,7 @@ app.get("/show", function(req, res) {
 app.get("/articleChange", function(req, res) {
   res.sendFile(path.join(__dirname, "dist/ChangeArticle.html"));
 });
+
 
 app.listen(app.get("port"), function() {
   console.log("app has run on server:", app.get("port"));

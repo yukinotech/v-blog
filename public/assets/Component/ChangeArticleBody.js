@@ -7,7 +7,7 @@ import javascript from "highlight.js/lib/languages/javascript";
 hljs.registerLanguage("javascript", javascript);
 import "../../directOutPutCss/hljsClass.css";
 import "../../directOutPutCss/markdownCode.css";
-import "../../directOutPutCss/font-awesome/css/font-awesome.min.css"
+
 
 
 marked.setOptions({

@@ -157,7 +157,8 @@ module.exports = {
     //     ]
     // },
     externals: {
-        "jquery":"jQuery"
+        "jquery":"jQuery",
+        "marked":"marked"
     },
     devServer: {
         contentBase: path.join(__dirname, 'public'),
