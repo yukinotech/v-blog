@@ -68,7 +68,7 @@ class Header extends React.Component {
     let UserLoginHeader = ()=> {
       return (
         <ul>
-          <li><a href="#">{this.state.username}</a></li>
+          <li><a href="/author">{this.state.username}</a></li>
           <li>你好，</li>
           <li>|</li>
           <li>

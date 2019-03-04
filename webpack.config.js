@@ -18,6 +18,7 @@ module.exports = {
         ArticleShow: './public/assets/ArticleShow.js',
         ChangeArticle: './public/assets/ChangeArticle.js',
         Register: './public/assets/Register.js',
+        PersonalPage:'./public/assets/PersonalPage.js',
     },
     output: {
         filename: '[name].bundle.js',
@@ -128,6 +129,11 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: path.resolve(__dirname, 'dist/Register.html'),
             template: './public/Register.html',
+            inject: false,
+        }),
+        new HtmlWebpackPlugin({
+            filename: path.resolve(__dirname, 'dist/PersonalPage.html'),
+            template: './public/PersonalPage.html',
             inject: false,
         }),
         new ExtractTextPlugin("css/styles.css")

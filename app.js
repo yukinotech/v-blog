@@ -87,11 +87,19 @@ app.use(express.static(path.join(__dirname, "public")));
 // });
 
 //设置文章增删改查api
+//查询所有文章
 app.get("/blog", blog.list);
+//创建新文章
 app.post("/blogCreatArticle", blog.add);
+//获得某个文章
 app.get("/Article/:id", blog.get);
+//修改某个文章
 app.post("/blogChangeArticle/:id", blog.change);
+//删除某个文章
 app.post('/articleDelete/:id',blog.delete)
+//查询某人所有文章
+app.post('/findSomeoneArticle',blog.findSomeoneArticle)
+
 
 //设置用户增删改查api
 app.post("/createAccount", user.register);
@@ -104,13 +112,18 @@ app.get("/logout", user.logout);
 
 
 
-//设置返回界面
+
+//设置返回页面
 app.get("/show", function(req, res) {
   res.sendFile(path.join(__dirname, "dist/ArticleShow.html"));
 });
 
 app.get("/articleChange", function(req, res) {
   res.sendFile(path.join(__dirname, "dist/ChangeArticle.html"));
+});
+
+app.get("/author", function(req, res) {
+  res.sendFile(path.join(__dirname, "dist/PersonalPage.html"));
 });
 
 

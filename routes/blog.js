@@ -107,7 +107,7 @@ exports.add = function(req, res) {
   }
 };
 
-
+//修改一个文章
 exports.change = function(req, res) {
   if (
     !(
@@ -156,6 +156,22 @@ exports.change = function(req, res) {
 
   
 };
+
+//查询某个作者的文章
+exports.findSomeoneArticle = function(req,res){
+  if(req.session.username && req.body.author){
+      article.find({author:req.body.author},function(err,articleData){
+        if(err){
+          console.log(err);
+          res.json('server_err')
+        }else{
+          res.json(articleData)
+        }
+      })
+  }else{
+    res.json('no_login')
+  }
+}
 
 exports.commentList = function(req, res) {
   comment.find({ articleId: req.params.id.toString() }, function(
