@@ -34,7 +34,7 @@ class PublishBody extends React.Component {
     this.state = {
       data: {
         _id: "",
-        title: "",
+        title: "请输入标题...",
         text: "",
         overview: "",
         date: new Date()

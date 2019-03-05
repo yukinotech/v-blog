@@ -20,25 +20,21 @@ class PersonalPageBody extends React.Component {
 
     return (
       <HashRouter>
-        <div>
-          <div className={style.nav}>
-            <h3>个人中心</h3>
-            <Link
-              to={{
-                pathname: "/",
-                state: { abc: 'true' }
-              }}
-            >
-              用户信息
-            </Link>
-            <Link to="/articleManage">文章管理</Link>
+        <div className={style.bodymainbox+' '+style.clearfix}>
+          <div className={style.nav_box}> 
+            <nav className={style.nav+' '+style.big}>
+              <h3 className={style.menu_header}>个人中心</h3>
+              <Link to="/" className={style.menu_item}>用户信息</Link>
+              <Link to="/articleManage" className={style.menu_item}>文章管理</Link>
+            </nav>
           </div>
           <div className={style.showbox}>
-          <usrinfo.Provider value={{'ss':'aaaaa'}}>
+            <usrinfo.Provider value={{'ss':'aaaaa'}}>
             <Route exact path="/" component={PersonInfoBox} />
             <Route path="/articleManage" component={ArticleManageBox} />
             </usrinfo.Provider>
           </div>
+          {/* <div className={style.clear}></div> */}
         </div>
       </HashRouter>
     );

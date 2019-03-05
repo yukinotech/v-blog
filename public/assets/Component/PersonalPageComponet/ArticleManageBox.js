@@ -8,16 +8,41 @@ class ArticleManageBox extends React.Component{
     }
     componentDidMount(){
         $.ajax({
-            url:'/getUsername',
-            type:'get',
-        })
-        $.ajax({
-            url:'/findSomeoneArticle',
-            type:'post',
-            data:''
-        })
+            url: "/getUsername",
+            dataType: "json",
+            cache: false,
+            type: "GET",
+            success: data => {
+              if (data === "no_login") {
+              } else {
+                $.ajax({
+                    url: "/findSomeoneArticle",
+                    dataType: "json",
+                    cache: true,
+                    type:'post',
+                    data:{author:data},
+                    success: data2 => {
+                        this.setState({ data: data2 },()=>{
+                            console.log(this.state)
+                        }); 
+                    }
+                  });
+              }
+            },
+            error: function(data) {
+              console.log(data);
+              alert(data.id);
+            }
+          });
+
+        console.log('ArticleManageBox DidMount')
+    }
+    componentWillUnmount(){
+        console.log('ArticleManageBox Unmount')
     }
     render(){
+        // let articlelist=
+    
         return(
             <div>
                 <usrinfo.Consumer>

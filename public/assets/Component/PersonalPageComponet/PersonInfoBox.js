@@ -6,7 +6,11 @@ class PersonInfoBox extends React.Component{
         super(props)
     }
     componentDidMount(){
-
+ 
+        console.log('PersonInfoBox DidMount')
+    }
+    componentWillUnmount(){
+        console.log('PersonInfoBox Unmount')
     }
     render(){
         return (
