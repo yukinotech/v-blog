@@ -45,7 +45,8 @@ app.use(
     // resave: false,  // 是否每次都重新保存会话，建议false
     saveUninitialized: false, // 是否保存未初始化的会话
     cookie: {
-      maxAge: 1000 * 60 * 60 * 10 // 设置 session 的有效时间，单位毫秒
+      maxAge: 1000 * 60 * 60 * 10 ,// 设置 session 的有效时间，单位毫秒
+      sameSite:'strict', //严格模式，预防CRSF攻击
     }
   })
 );
