@@ -89,8 +89,8 @@ class ArticleShowBody extends React.Component {
                 <span className={style.publishtime}>{new Date(this.state.data.date).toLocaleString()}</span>
               </div>
             </div>
-            {this.props.isauthor?<a onClick={this.deleteArticle} href="javascript:0" className={style.edit}>删除文章</a>:null}
-            {this.props.isauthor?<a  href={"/articleChange?articleID="+this.state.data._id} className={style.delete}>修改文章</a>:null}
+            {this.props.isauthor?<a onClick={this.deleteArticle} href="javascript:0" className={style.delete}>删除文章</a>:null}
+            {this.props.isauthor?<a  href={"/articleChange?articleID="+this.state.data._id} className={style.edit}>修改文章</a>:null}
           </div>
           {/* <p>最后一次发布时间:{new Date(this.state.data.date).toLocaleString()}</p>
           <p>作者:{this.state.data.author}</p>

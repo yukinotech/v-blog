@@ -4,12 +4,19 @@
     format("woff2");
 }
 /* code setting */
+.markdown{
+  font-size: 16px;
+  line-height: 1.7em;
+}
 .markdown pre {
   color: #abb2bf;
   background: #282c34;
   /* overflow-x:scroll; */
   overflow: auto; 
   overflow-y:hidden;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top:10px;
 }
 
 .markdown pre code {
@@ -34,6 +41,7 @@
 /* p,p a 段落 setting */
 .markdown p {
   word-break: break-word;
+  margin-top:12px;
 }
 .markdown p a {
     color: #0645ad;
@@ -66,6 +74,7 @@
   .markdown h4,
   .markdown h5,
   .markdown h6 {
+    margin-top: 1.4em;
     font-weight: normal;
     color: #111;
     line-height: 1.4em;

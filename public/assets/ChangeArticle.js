@@ -26,7 +26,7 @@ class ChangeArticle extends React.Component {
         <div>
             <Header/>
             <ChangeArticleBody articleID={this.articleID}/>
-            <Footer/>
+            {/* <Footer/> */}
         </div>
       );
     }

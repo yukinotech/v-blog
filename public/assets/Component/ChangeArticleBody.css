@@ -68,7 +68,7 @@
 .h1preview{
     /* height: 100px; */
     box-sizing: border-box;
-    padding: 0px 0px 30px 0px;
+    /* padding: 0px 0px 30px 0px; */
 }
 .editorNav .floatright{
     float: right;
@@ -77,14 +77,17 @@
     width: 100%;
     margin-bottom: 0;
     border: none;
-    font-size: 30px;
+    font-size: 23px;
     font-weight: 400;
     line-height: 30px;
     box-shadow: none;
     color: #595959;
     outline: none;
     box-sizing: border-box;
+    margin: 10px 0;
+    padding-left: 10px;
     height: 30px;
+    /* background-color: rgb(226, 225, 225); */
 }
 
 .articleInputText{
@@ -101,8 +104,8 @@
     outline: none;
     box-sizing:border-box;
     /* min-height: 100%; */
-    height:calc(100vh - 120px);
-    background: #d1e0d1;
+    height:calc(100vh - 140px);
+    background: #eaf1ea;
     resize:none 
     /* margin-top: 10px; */
     /* border: #337ab7 1px solid */

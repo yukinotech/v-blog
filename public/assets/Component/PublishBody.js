@@ -3,9 +3,11 @@ import marked from "marked";
 import $ from "jquery";
 import hljs from "highlight.js";
 import React from "react";
+import Switch from "antd/lib/switch";
+
 import '../../directOutPutCss/hljsClass.css'
 import '../../directOutPutCss/markdownCode.css'
-
+import "../../directOutPutCss/antd.css";
 
 
 
@@ -25,27 +27,58 @@ marked.setOptions({
 });
 
 
-
-
-
 class PublishBody extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       data: {
         _id: "",
-        title: "请输入标题...",
+        title: "",
         text: "",
         overview: "",
         date: new Date()
       },
       preview:{
+      },
+      isAlign: true,
+      inleft: false,
+      inright: false,
+      leftarea: "",
+      rightarea: ""
+    };
+    this.eventConlect = {
+      leftmouseenter: () => {
+        this.state.inleft = true;
+        console.log(this.state)
+      },
+      leftmouseleave: () => {
+        this.state.inleft = false;
+      },
+      leftscroll: () => {
+        if (this.state.inleft) {
+          this.state.rightarea.scrollTop = this.state.leftarea.scrollTop; 
+        }
+       
+      },
+      rightmouseenter: () => {
+        this.state.inright = true;
+      },
+      rightmouseleave: () => {
+        this.state.inright = false;
+      },
+      rightscroll: () => {
+        if (this.state.inright) {
+          this.state.leftarea.scrollTop = this.state.rightarea.scrollTop;
+        }
       }
     };
     this.HaddleSubmit = this.HaddleSubmit.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleTextChange = this.handleTextChange.bind(this);
     this.clickToSubmit = this.clickToSubmit.bind(this);
+    this.haddleAlignChange = this.haddleAlignChange.bind(this);
+    this.scrollAlign = this.scrollAlign.bind(this);
+    this.removeAlign = this.removeAlign.bind(this);
   }
 
   handleTitleChange(e) {
@@ -105,8 +138,62 @@ class PublishBody extends React.Component {
     this.HaddleSubmit()
 
   }
+  haddleAlignChange() {
+    this.setState(
+      (state, props) => {
+        console.log(this.state);
+        return { isAlign: !state.isAlign };
+      },
+      () => {
+        if (this.state.isAlign) {
+          console.log("加入scroll");
+          this.scrollAlign();
+        } else {
+          console.log("删除scroll");
+          this.removeAlign();
+        }
+      }
+    );
+  }
   componentDidMount() {
+    let leftarea = document.getElementById("leftarea");
+    let rightarea = document.getElementById("rightarea");
+    this.setState({ leftarea: leftarea, rightarea: rightarea }, () => {
+      this.scrollAlign();
+    });
+  }
+  scrollAlign() {
+    let leftarea = document.getElementById("leftarea");
+    let rightarea = document.getElementById("rightarea");
 
+    leftarea.addEventListener("mouseenter", this.eventConlect.leftmouseenter);
+    leftarea.addEventListener("mouseleave", this.eventConlect.leftmouseleave);
+    leftarea.addEventListener("scroll", this.eventConlect.leftscroll);
+    rightarea.addEventListener("mouseenter", this.eventConlect.rightmouseenter);
+    rightarea.addEventListener("mouseleave", this.eventConlect.rightmouseleave);
+    rightarea.addEventListener("scroll", this.eventConlect.rightscroll);
+  }
+  removeAlign() {
+    let leftarea = document.getElementById("leftarea");
+    let rightarea = document.getElementById("rightarea");
+    leftarea.removeEventListener(
+      "mouseenter",
+      this.eventConlect.leftmouseenter
+    );
+    leftarea.removeEventListener(
+      "mouseleave",
+      this.eventConlect.leftmouseleave
+    );
+    leftarea.removeEventListener("scroll", this.eventConlect.leftscroll);
+    rightarea.removeEventListener(
+      "mouseenter",
+      this.eventConlect.rightmouseenter
+    );
+    rightarea.removeEventListener(
+      "mouseleave",
+      this.eventConlect.rightmouseleave
+    );
+    rightarea.removeEventListener("scroll", this.eventConlect.rightscroll);
   }
   render() {
     return (
@@ -118,6 +205,7 @@ class PublishBody extends React.Component {
               className={style.articleInputTitle}
               value={this.state.data.title}
               onChange={this.handleTitleChange}
+              placeholder="请输入title"
             />
             <ul className={style.editorNav}>
               <li className={style.floatright} onClick={this.clickToSubmit}><i className={"fa fa-mail-forward "+style.submit_i}></i><span className={style.submit_span}>发布文章</span></li>
@@ -125,6 +213,7 @@ class PublishBody extends React.Component {
               <input type="submit" className={style.button} value=" " />
             </ul>
             <textarea
+              id="leftarea"
               onChange={this.handleTextChange}
               value={this.state.data.value}
               className={style.articleInputText}
@@ -132,7 +221,14 @@ class PublishBody extends React.Component {
             
           </form>
         </div>
-        <div className={style.right}>
+        <div className={style.right}  id="rightarea">
+        <div>
+            同步滚动:
+            <Switch
+              defaultChecked={this.state.isAlign}
+              onChange={this.haddleAlignChange}
+            />
+          </div>
             <h1 className={style.h1preview}>{this.state.data.title}</h1>
             <div dangerouslySetInnerHTML={{ __html: marked(this.state.data.text)}} className='markdown'></div>
         </div>
