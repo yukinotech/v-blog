@@ -3,7 +3,7 @@ import marked from "marked";
 import $ from "jquery";
 import hljs from "highlight.js";
 import React from "react";
-import Switch from "antd/lib/switch";
+import Switch from "./commonComponent/Switch.js";
 
 import '../../directOutPutCss/hljsClass.css'
 import '../../directOutPutCss/markdownCode.css'
@@ -223,9 +223,9 @@ class PublishBody extends React.Component {
         </div>
         <div className={style.right}  id="rightarea">
         <div>
-            同步滚动:
+            <label className={style.chuizhiMiddle}>同步滚动:</label>
             <Switch
-              defaultChecked={this.state.isAlign}
+              Checked={this.state.isAlign}
               onChange={this.haddleAlignChange}
             />
           </div>
