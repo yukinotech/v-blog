@@ -11,13 +11,9 @@ class PersonalPageBody extends React.Component {
     super(props);
     this.state = {};
   }
-
   componentDidMount() {
-    
   }
-  
   render() {
-
     return (
       <HashRouter>
         <div className={style.bodymainbox+' '+style.clearfix}>
@@ -28,11 +24,9 @@ class PersonalPageBody extends React.Component {
               <Link to="/articleManage" className={style.menu_item}>文章管理</Link>
             </nav>
           </div>
-          <div className={style.showbox}>
-            <usrinfo.Provider value={{'ss':'aaaaa'}}>
+          <div className={style.showbox}>   
             <Route exact path="/" component={PersonInfoBox} />
             <Route path="/articleManage" component={ArticleManageBox} />
-            </usrinfo.Provider>
           </div>
           {/* <div className={style.clear}></div> */}
         </div>

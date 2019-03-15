@@ -4,8 +4,6 @@ var bodyParser = require("body-parser");
 // var logger = require('morgan');
 var path = require("path");
 
-
-
 const webpack = require("webpack");
 const webpackMiddleware = require("webpack-dev-middleware");
 let webpackConf = require("./webpack.config.js");
@@ -45,8 +43,8 @@ app.use(
     // resave: false,  // 是否每次都重新保存会话，建议false
     saveUninitialized: false, // 是否保存未初始化的会话
     cookie: {
-      maxAge: 1000 * 60 * 60 * 10 ,// 设置 session 的有效时间，单位毫秒
-      sameSite:'strict', //严格模式，预防CRSF攻击
+      maxAge: 1000 * 60 * 60 * 10, // 设置 session 的有效时间，单位毫秒
+      sameSite: "strict" //严格模式，预防CRSF攻击
     }
   })
 );
@@ -64,17 +62,17 @@ app.use(cookieParser("secret")); //和session中间件的secert字段保持一�
 var compiler = webpack(webpackConf);
 
 //生产模式下不使用webpack中间件
-// app.use(
-//   webpackMiddleware(compiler, {
-//     publicPath: webpackConf.output.publicPath
-//   })
-// );
+app.use(
+  webpackMiddleware(compiler, {
+    publicPath: webpackConf.output.publicPath
+  })
+);
 
 // 将静态资源挂载在服务器的端口上
 // 使用public为开发模式，此时app.js运行的express是上线的后端负责api请求和数据库连接，注意webpack-dev-server也应开启，在线热更新
-// app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "public")));
 // 使用dist为生产模式，可以删掉public,和package里面的dev开发所需模块，注意dist文件夹为webpack编译所生成
-app.use(express.static(path.join(__dirname, "dist")));
+// app.use(express.static(path.join(__dirname, "dist")));
 
 // 允许跨域
 // app.all("*", function(req, res, next) {
@@ -97,22 +95,21 @@ app.get("/Article/:id", blog.get);
 //修改某个文章
 app.post("/blogChangeArticle/:id", blog.change);
 //删除某个文章
-app.post('/articleDelete/:id',blog.delete)
+app.post("/articleDelete/:id", blog.delete);
 //查询某人所有文章
-app.post('/findSomeoneArticle',blog.findSomeoneArticle)
-
+app.post("/findSomeoneArticle", blog.findSomeoneArticle);
 
 //设置用户增删改查api
 app.post("/createAccount", user.register);
 app.post("/login", user.login);
 app.get("/getUsername", user.getUsername);
+app.get("/getPublicname", user.getPublicname);
 app.get("/logout", user.logout);
+app.post("/getUserInfo", user.getUserInfo);
+
 
 //分页部分
 // app.get("/page/:id")
-
-
-
 
 //设置返回页面
 app.get("/show", function(req, res) {
@@ -124,9 +121,12 @@ app.get("/articleChange", function(req, res) {
 });
 
 app.get("/author", function(req, res) {
-  res.sendFile(path.join(__dirname, "dist/PersonalPage.html"));
+  if (req.session.username) {
+    res.sendFile(path.join(__dirname, "dist/PersonalPage.html"));
+  } else{
+    res.redirect('/')
+  }
 });
-
 
 app.listen(app.get("port"), function() {
   console.log("app has run on server:", app.get("port"));

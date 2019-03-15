@@ -41,7 +41,7 @@ class Header extends React.Component {
   componentWillMount() {
 		let that=this
     $.ajax({
-      url: "/getUsername",
+      url: "/getPublicname",
       dataType: "json",
       cache: false,
       type: "GET",
@@ -67,28 +67,18 @@ class Header extends React.Component {
   render() {
     let UserLoginHeader = ()=> {
       return (
-        <ul>
-          <li><a href="/author">{this.state.username}</a></li>
-          <li>你好，</li>
-          <li>|</li>
-          <li>
-            <a href="#" onClick={this.logout}>登出</a>
-          </li>
-        </ul>
+        <div>    
+            <a href="#" onClick={this.logout}>登出&nbsp;&nbsp;</a>|&nbsp;&nbsp;你好，<a href="/author">{this.state.username}</a>    
+        </div>
       );
     };
 
     let UserNoLoginHeader =()=>{
       return (
-        <ul>
-          <li>
-            <a href="/login.html">登录</a>
-          </li>
-          <li>|</li>
-          <li>
-            <a href="/Register.html">注册</a>
-          </li>
-        </ul>
+        <div>
+          <a href="/login.html">登录&nbsp;&nbsp;</a>|
+          <a href="/Register.html">&nbsp;&nbsp;注册</a>
+        </div>
       );
     };
     let UserHeader = this.state.login ? UserLoginHeader : UserNoLoginHeader;

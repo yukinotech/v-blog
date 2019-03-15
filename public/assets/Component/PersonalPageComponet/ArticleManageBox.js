@@ -45,15 +45,7 @@ class ArticleManageBox extends React.Component{
     
         return(
             <div>
-                <usrinfo.Consumer>
-                {value => {
-                    let v = value.ss
-                    return(
-                        <div>{v}</div>
-                    )
-                    }
-                }
-                </usrinfo.Consumer>
+                sssssssss
             </div>
         )
     }

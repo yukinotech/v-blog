@@ -55,6 +55,7 @@ exports.register = function(req, res) {
       console.log("用户 " + req.body.username + " 不存在,可以创建新用户");
       let newuser = {
         username: req.body.username,
+        publicname:'用户名'+req.body.username,
         password: req.body.password,
         email: req.body.email
       };
@@ -79,13 +80,64 @@ exports.getUsername = function(req, res) {
   }
 };
 
+exports.getPublicname = function(req, res) {
+  console.log(req.session);
+  if (req.session.username) {
+    //判断session 状态，如果有效，则返回主页，否则转到登录页面
+    console.log("login");
+    let username=req.session.username
+    user.find({username:username},(err,userdata)=>{
+      if(err){
+        res.json('no_login')
+      } else{
+        if(userdata.length===1){
+            if(userdata[0].publicname){
+              res.json(userdata[0].publicname)
+            } else{
+              res.json('未设置用户名，点击赶紧更改')
+            }
+        } else{
+          res.json('no_login')
+        }
+        
+      }
+    })
+  } else {
+    console.log("no_login");
+    res.json("no_login");
+  }
+};
+
+exports.getUserInfo = function(req, res) {
+  if (req.session.username) {
+    user.find({ username: req.session.username }, (err, userdata) => {
+      if (err) {
+        res.json("server error");
+      } else {
+        if (userdata.length === 0) {
+          console.log("用户 " + req.session.username + " 不存在");
+          res.json("no_such_user");
+        } else if (userdata.length === 1) {      
+          let resdata=userdata[0]
+          delete resdata._doc.password
+          delete resdata._doc._id
+          // delete resdata._doc.username
+          res.json(resdata._doc)
+        } else{
+          res.json("database error");
+        }
+      }
+    });
+  }
+};
+
 exports.logout = function(req, res) {
   req.session.destroy(function(err) {
     if (err) {
       console.log(err);
-      res.json('logout_fail');
+      res.json("logout_fail");
     } else {
-      res.json('logout_success');
+      res.json("logout_success");
     }
   });
 };

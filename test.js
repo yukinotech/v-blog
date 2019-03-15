@@ -1,3 +1,6 @@
-if(''){
-    console.log(1)
+let a={
+    dd:'ffff'
 }
+delete a.dd
+
+console.log(a)

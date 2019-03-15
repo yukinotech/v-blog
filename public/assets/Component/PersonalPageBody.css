@@ -1,9 +1,9 @@
 .bodymainbox{
     margin: 0 auto;
     padding-top: 20px;
-    width:980px;
+    width:1180px;
     /* height: 400px; */
-    background-color: rgb(238, 13, 13);
+    /* background-color: rgb(238, 13, 13); */
     box-sizing:border-box;
 }
 .nav_box {
@@ -43,6 +43,9 @@
 }
 .showbox {
   width: 75%;
+  box-sizing: border-box;
+  padding-left: 20px;
+  float: left;
 }
 .clearfix:after{
     clear: both;
