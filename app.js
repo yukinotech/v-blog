@@ -12,6 +12,9 @@ let webpackConf = require("./webpack.config.js");
 var blog = require("./routes/blog");
 var user = require("./routes/user");
 
+//使用multer完成上传组件
+const multer = require("multer");
+
 //导入session
 var session = require("express-session");
 //使用mongodb储存session
@@ -69,12 +72,15 @@ app.use(
 );
 
 // 将静态资源挂载在服务器的端口上
+// 此处静态资源是头像文件的静态储存位置
+app.use("/avatar", express.static(path.join(__dirname, "public/avatar")));
+
 // 使用public为开发模式，此时app.js运行的express是上线的后端负责api请求和数据库连接，注意webpack-dev-server也应开启，在线热更新
 app.use(express.static(path.join(__dirname, "public")));
 // 使用dist为生产模式，可以删掉public,和package里面的dev开发所需模块，注意dist文件夹为webpack编译所生成
 // app.use(express.static(path.join(__dirname, "dist")));
 
-// 允许跨域
+// 允许跨域，前后端分离开发使用
 // app.all("*", function(req, res, next) {
 //   res.header("Access-Control-Allow-Origin", "http://localhost:3000");
 //   res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -106,7 +112,64 @@ app.get("/getUsername", user.getUsername);
 app.get("/getPublicname", user.getPublicname);
 app.get("/logout", user.logout);
 app.post("/getUserInfo", user.getUserInfo);
+app.post("/updateUserInfo", user.updateUserInfo);
 
+//设置头像更新api
+app.post(
+  "/updateAvatar",
+  multer({
+    storage: multer.diskStorage({
+      destination: function(req, file, cb) {
+        cb(null, "public/avatar");
+      },
+      filename: function(req, file, cb) {
+        let strArray = file.originalname.split(".");
+        let houzhuiming = strArray[strArray.length - 1];
+        let tag = /.jpg$|.png$|.jpeg$/i;
+        if (tag.test(file.originalname)) {
+          let newfilename =
+            Buffer.from(Date.now() + file.originalname)
+              .toString("hex")
+              .substr(0, 30) +
+            "." +
+            houzhuiming;
+          cb(null, newfilename);
+        } else {
+          cb(null, file.originalname + Date.now());
+        }
+      }
+    }),
+    fileFilter: function(req, file, cb) {
+      // 这个函数应该调用 `cb` 用boolean值来
+      // 指示是否应接受该文件
+      if (req.session.username) {
+        let tag = /.jpg$|.png$|.jpeg$/i;
+        let isReceive = tag.test(file.originalname);
+        if (isReceive) {
+          cb(null, true);
+        } else {
+          cb(null, false);
+        }
+        console.log(file.originalname);
+        console.log(1111111);
+        console.log(file);
+        console.log(111111111);
+      } else {
+        cb(null, false);
+      }
+
+      // 拒绝这个文件，使用`false`，像这样:
+
+      // 接受这个文件，使用`true`，像这样:
+      // cb(null, true)
+    },
+    limits: {
+      fieldSize: 500 * 1024,
+      fileSize: 500 * 1024
+    }
+  }).single("avatarData"),
+  user.updateAvatar
+);
 
 //分页部分
 // app.get("/page/:id")
@@ -123,8 +186,8 @@ app.get("/articleChange", function(req, res) {
 app.get("/author", function(req, res) {
   if (req.session.username) {
     res.sendFile(path.join(__dirname, "dist/PersonalPage.html"));
-  } else{
-    res.redirect('/')
+  } else {
+    res.redirect("/");
   }
 });
 

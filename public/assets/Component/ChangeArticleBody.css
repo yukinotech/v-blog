@@ -3,10 +3,12 @@
     margin: 0 auto;
     /* height: 1000px; */
     /* padding-top: 100px; */
+    flex: 1 0 auto;
+    display: flex;
 }
 
 .left{
-    float: left;
+
     width: 50%;
     box-sizing:border-box;
     overflow-y: auto;
@@ -15,7 +17,6 @@
 
 .right{
     
-    float: right;
     width: 50%;
     height: calc(100vh - 50px);
     overflow-y: auto;

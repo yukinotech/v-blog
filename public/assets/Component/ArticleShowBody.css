@@ -4,6 +4,7 @@
     margin:0 auto;
     padding-top: 100px;
     /* background-color: #74eb45; */
+    flex: 1 0 auto;
 }
 .left{
     width: 73%;

@@ -11,6 +11,8 @@
     /* background: rgb(55, 161, 28); */
     padding: 15px;
     float: left;
+    min-width: 160px;
+    max-width: 200px;
 }
 
 .box label{
@@ -26,7 +28,7 @@
     background-color: #fafbfc;
     margin-right: 5px;
     max-width: 100%;
-    width: 440px;
+    width: 80%;
     background-color: #fff;
     background-position: right 8px center;
     background-repeat: no-repeat;
@@ -44,7 +46,7 @@
 .box textarea{
     height: 5.35em;
     min-height: 0;
-    width: 440px;
+    width: 80%;
     background-color: #fff;
     background-position: right 8px center;
     background-repeat: no-repeat;
@@ -63,6 +65,10 @@
 .Avatar{
     width: 200px;
     height: 200px;
+    border: #d1d5da solid 1px;
+}
+.updateavatar{
+    width: 100%;
 }
 .title{
     font-size: 24px;

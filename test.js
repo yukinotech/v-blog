@@ -1,6 +1,2 @@
-let a={
-    dd:'ffff'
-}
-delete a.dd
-
-console.log(a)
+let delete2 = require('./test/tt')
+delete2.delete()

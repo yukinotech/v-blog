@@ -6,7 +6,8 @@ var userSchema = new mongoose.Schema(
     publicname:String,
     password:String,
     email:String,
-    signature:String
+    signature:String,
+    avatar:String
   },
   { versionKey: false }
 );

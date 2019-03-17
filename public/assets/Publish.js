@@ -8,7 +8,7 @@ import PublishBody from './Component/PublishBody.js'
 class Publish extends React.Component {
     render() {
       return (
-        <div>
+        <div  className='pagecontainer'>
             <Header/>
             <PublishBody/>
             {/* <Footer/> */}

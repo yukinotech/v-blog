@@ -5,7 +5,7 @@ import $ from 'jquery'
 
 import marked from "marked";
 import hljs from "highlight.js";
-import imgitem from "../../img/62351480_0.jpg"
+import defaultAvatar from "../../avatar/defaultAvatar.jpg"
 import '../../directOutPutCss/hljsClass.css'
 import '../../directOutPutCss/markdownCode.css'
 
@@ -38,6 +38,8 @@ class ArticleShowBody extends React.Component {
         date: "",
         author:""
       },
+      avatar:'',
+      publicname:''
     };
     this.deleteArticle=this.deleteArticle.bind(this)
   }
@@ -45,7 +47,18 @@ class ArticleShowBody extends React.Component {
   componentWillReceiveProps(nextProps) {
     this.setState({
      data: nextProps.articleData,
-    });
+    },function(){
+      let that =this
+      let userdata={username:nextProps.articleData.author}
+      $.ajax({
+        url:'/getUserInfo',
+        type:'POST',
+        data:userdata,
+        success:(data)=>{
+          that.setState({avatar:data.avatar,publicname:data.publicname})
+        }
+      })
+});
    }
   componentWillMount() {
     this.setState({data:this.props.articleData})
@@ -72,6 +85,9 @@ class ArticleShowBody extends React.Component {
     });
     
   }
+  componentDidMount(){
+
+  }
   // changeArticle(){
   //   this.props.changeState()
   // }
@@ -82,9 +98,9 @@ class ArticleShowBody extends React.Component {
         <div className={style.left}>
           <h1 className={style.title}>{this.state.data.title}</h1>
           <div className={style.author}>
-            <a className={style.avatar} href=""><img src={imgitem} alt=""/></a>
+            <a className={style.avatar} href=""><img src={(this.state.avatar===''||this.state.avatar===undefined)?defaultAvatar:this.state.avatar} alt=""/></a>
             <div className={style.info}>
-              <span className={style.authorName}><a href="">{this.state.data.author}</a></span>
+              <span className={style.authorName}><a href="">{this.state.publicname}</a></span>
               <div className={style.meta}>
                 <span className={style.publishtime}>{new Date(this.state.data.date).toLocaleString()}</span>
               </div>

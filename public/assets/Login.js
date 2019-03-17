@@ -8,7 +8,7 @@ import Footer from './Component/Footer.js'
 class Login extends React.Component {
     render() {
       return (
-        <div>
+        <div  className='pagecontainer'>
             <Header/>
             <LoginBody/>
             <Footer/>

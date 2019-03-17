@@ -23,7 +23,7 @@ class ChangeArticle extends React.Component {
   }
     render() {
       return (
-        <div>
+        <div className='pagecontainer'>
             <Header/>
             <ChangeArticleBody articleID={this.articleID}/>
             {/* <Footer/> */}

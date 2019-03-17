@@ -4,7 +4,7 @@ import "../css/main.css";
 import Header from "./Component/Header.js";
 import Footer from "./Component/Footer.js";
 import ArticleShowBody from "./Component/ArticleShowBody.js";
-import ChangeArticleBody from "./Component/ChangeArticleBody.js";
+
 import $ from "jquery";
 
 class ArticleShow extends React.Component {
@@ -85,7 +85,7 @@ class ArticleShow extends React.Component {
   render() {
     if (this.state.pagestate === "show") {
       return (
-        <div>
+        <div className='pagecontainer'>
           <Header />
           <ArticleShowBody
             articleData={this.state.data}
