@@ -104,6 +104,10 @@ app.post("/blogChangeArticle/:id", blog.change);
 app.post("/articleDelete/:id", blog.delete);
 //查询某人所有文章
 app.post("/findSomeoneArticle", blog.findSomeoneArticle);
+//带有查询字符串的查询个人文章API
+app.get("/findArticle", blog.findArticle);
+//带有查询字符串的查询全部文章API
+app.get("/findArticleAll", blog.findArticleAll);
 
 //设置用户增删改查api
 app.post("/createAccount", user.register);
@@ -183,6 +187,15 @@ app.get("/articleChange", function(req, res) {
   res.sendFile(path.join(__dirname, "dist/ChangeArticle.html"));
 });
 
+app.get("/publish", function(req, res) {
+  if(req.session.username){
+    res.sendFile(path.join(__dirname, "dist/publish.html"))
+  } else{
+    res.sendFile(path.join(__dirname, "dist/NoPermission.html"))
+  }
+  
+});
+
 app.get("/author", function(req, res) {
   if (req.session.username) {
     res.sendFile(path.join(__dirname, "dist/PersonalPage.html"));
@@ -190,6 +203,10 @@ app.get("/author", function(req, res) {
     res.redirect("/");
   }
 });
+
+app.use(function(req,res){
+    res.sendFile(path.join(__dirname, "dist/Page404.html"));
+})
 
 app.listen(app.get("port"), function() {
   console.log("app has run on server:", app.get("port"));

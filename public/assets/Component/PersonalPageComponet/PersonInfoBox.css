@@ -64,7 +64,9 @@
 }
 .Avatar{
     width: 200px;
-    height: 200px;
+    /* height: 200px; */
+    max-height: 300px;
+    min-height: 120px;
     border: #d1d5da solid 1px;
 }
 .updateavatar{

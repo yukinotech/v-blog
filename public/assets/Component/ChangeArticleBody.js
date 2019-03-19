@@ -85,7 +85,7 @@ class ChangeArticleBody extends React.Component {
     });
     console.log(this.state.data);
   }
-  HaddleSubmit(e) {
+  HaddleSubmit() {
     var data = {};
     data["title"] = this.state.data.title;
     data["date"] = new Date();
@@ -110,7 +110,8 @@ class ChangeArticleBody extends React.Component {
       data: data,
       success: data => {
         newArticleID = JSON.parse(data).id;
-        alert("提交成功 " + newArticleID);
+        alert("提交成功 " + newArticleID +'\n'+'跳回首页');
+        window.location.href='/'
       },
       error: function(data) {
         console.log(data);
@@ -118,7 +119,7 @@ class ChangeArticleBody extends React.Component {
       }
     });
 
-    e.preventDefault();
+    
   }
   handleTextChange(e) {
     let val = e.target.value;
@@ -129,6 +130,7 @@ class ChangeArticleBody extends React.Component {
     console.log(this.state.data);
   }
   clickToSubmit(e) {
+    e.preventDefault();
     this.HaddleSubmit();
   }
   haddleAlignChange() {

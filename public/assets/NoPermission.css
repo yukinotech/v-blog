@@ -1,0 +1,18 @@
+.centerBox{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content:center;
+}
+
+
+.centerItem{
+    display: inline-block;
+    height: 100px;
+    width: 500px;
+    background: rgb(247, 244, 244);
+    color: rgb(255, 103, 103);
+    text-align: center;
+    line-height: 100px;
+}

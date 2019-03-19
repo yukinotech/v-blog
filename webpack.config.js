@@ -18,7 +18,9 @@ module.exports = {
     ArticleShow: "./public/assets/ArticleShow.js",
     ChangeArticle: "./public/assets/ChangeArticle.js",
     Register: "./public/assets/Register.js",
-    PersonalPage: "./public/assets/PersonalPage.js"
+    PersonalPage: "./public/assets/PersonalPage.js",
+    NoPermission: "./public/assets/NoPermission.js",
+    Page404: "./public/assets/Page404.js",
   },
   output: {
     filename: "[name].bundle.js",
@@ -167,6 +169,16 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: path.resolve(__dirname, "dist/PersonalPage.html"),
       template: "./public/PersonalPage.html",
+      inject: false
+    }),
+    new HtmlWebpackPlugin({
+      filename: path.resolve(__dirname, "dist/NoPermission.html"),
+      template: "./public/NoPermission.html",
+      inject: false
+    }),
+    new HtmlWebpackPlugin({
+      filename: path.resolve(__dirname, "dist/Page404.html"),
+      template: "./public/Page404.html",
       inject: false
     }),
     new ExtractTextPlugin("css/styles.css")

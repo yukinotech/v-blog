@@ -1,0 +1,16 @@
+.box{}
+.boxleft{
+    width: 70%;
+    box-sizing: border-box;
+    /* background: rgb(216, 114, 114); */
+    float: left;
+}
+.title{
+    font-size: 24px;
+    font-weight: 400;
+    border-bottom: 1px solid gainsboro;
+    margin-bottom: 10px;
+}
+.articleListBox{
+    
+}

@@ -11,15 +11,14 @@ class ArticleCollet extends React.Component {
   }
   getlistItemJson() {
     $.ajax({
-      url: "/blog",
+      url: "/findArticleAll?currentPage=1&pageSize=7",
       dataType: "json",
-      cache: false,
-      crossDomain: true,
+      // cache: false,
       success: data => {
-        data.sort(function(a, b) {
-          return new Date(b.date) - new Date(a.date);
-        });
-        this.setState({ data: data });
+        // data.sort(function(a, b) {
+        //   return new Date(b.date) - new Date(a.date);
+        // });
+        this.setState({ data: data.data });
       }
     });
   }
@@ -27,8 +26,8 @@ class ArticleCollet extends React.Component {
     this.getlistItemJson();
   }
   render() {
-    let listItems = this.state.data.slice(0, 7).map(item => {
-      return <AritcleItemlist altItem={item} />;
+    let listItems = this.state.data.slice(0, 7).map((item,index) => {
+      return <AritcleItemlist altItem={item} key={'AritcleItemlist'+index}/>;
     });
     return (
       <div>

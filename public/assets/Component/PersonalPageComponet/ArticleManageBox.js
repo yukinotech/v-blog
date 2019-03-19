@@ -1,54 +1,36 @@
 import React from 'react'
 import $ from 'jquery'
+import style from './ArticleManageBox.css'
 import usrinfo from '../PersonalContext/usrinfo.js'
+import ArticleManageArticleList from './ArticleManageArticleList.js'
+
 
 class ArticleManageBox extends React.Component{
     constructor(props){
         super(props)
     }
     componentDidMount(){
-        $.ajax({
-            url: "/getUsername",
-            dataType: "json",
-            cache: false,
-            type: "GET",
-            success: data => {
-              if (data === "no_login") {
-              } else {
-                $.ajax({
-                    url: "/findSomeoneArticle",
-                    dataType: "json",
-                    cache: true,
-                    type:'post',
-                    data:{author:data},
-                    success: data2 => {
-                        this.setState({ data: data2 },()=>{
-                            console.log(this.state)
-                        }); 
-                    }
-                  });
-              }
-            },
-            error: function(data) {
-              console.log(data);
-              alert(data.id);
-            }
-          });
-
         console.log('ArticleManageBox DidMount')
     }
     componentWillUnmount(){
         console.log('ArticleManageBox Unmount')
     }
     render(){
-        // let articlelist=
-    
         return(
-            <div>
-                sssssssss
+            <div className={style.box}>
+                <div className={style.boxleft}>               
+                    <h1 className={style.title}>文章列表</h1>
+                    <div className={style.articleListBox}>
+                        <ArticleManageArticleList />
+                    </div>
+                </div>
             </div>
         )
     }
 }
+
+
+
+
 
 export default ArticleManageBox;

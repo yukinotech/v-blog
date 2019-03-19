@@ -13,7 +13,7 @@ var db1 = mongoose.createConnection("mongodb://127.0.0.1:27017/blog"); // 链接
 var article = db1.model("article", articleSchema);
 
 
-//查询全部文章
+//查询全部文章,无查询字符串
 exports.list = function(req, res) {
   article.find(function(err, article) {
     // console.log(article);
@@ -172,6 +172,123 @@ exports.findSomeoneArticle = function(req,res){
     res.json('no_login')
   }
 }
+
+//带有查询字符串的查询个人文章接口
+exports.findArticle = function(req,res){
+  if(req.session.username){
+
+    //pageSize：一页面的消息数量
+    //currentPage：当前页面编号
+    let{pageSize,currentPage,searchname}  = req.query  
+    searchname=searchname?searchname:req.session.username;
+    //字符串转成数字 
+    pageSize=parseInt(pageSize)
+    currentPage=parseInt(currentPage)
+    //跳过数
+    let skipnum = (currentPage - 1) * pageSize;  
+    console.log(pageSize)
+    console.log(currentPage)
+    console.log(searchname)
+    if(
+      Number.isInteger(pageSize)  &&
+      Number.isInteger(currentPage) &&
+      pageSize<20 && pageSize>0 &&
+      currentPage>0
+    ){
+      new Promise((resolve,reject)=>{
+        article.find({author:searchname}).skip(skipnum).limit(pageSize).sort({date:-1}).exec(function(err,data){
+        if(err){
+          res.json('err')
+          reject('')
+        } else{
+          resolve(data)
+        }
+      })
+      }).then((data)=>{
+        article.find({author:searchname},function(err,data2){
+          if(err){
+            res.json('err')
+          } else{
+            let length = data2.length
+            let resdata={
+              data:data,
+              itemlength:length
+            }
+            res.json(resdata)
+          }
+        })
+      }).catch((err)=>{
+        console.log(err)
+      })
+
+    } else{
+      res.json('query_illegal')
+    }
+
+    
+
+    console.log(req.query)
+    // res.json(req.query)
+  } else{
+    res.json('no_login')
+  }
+}
+
+//带有查询字符串的查询全部文章接口
+exports.findArticleAll = function(req,res){
+    //pageSize：一页面的消息数量
+    //currentPage：当前页面编号
+    let{pageSize,currentPage}  = req.query  
+    //字符串转成数字 
+    pageSize=parseInt(pageSize)
+    currentPage=parseInt(currentPage)
+    //跳过数
+    let skipnum = (currentPage - 1) * pageSize;  
+    console.log(pageSize)
+    console.log(currentPage)
+    if(
+      Number.isInteger(pageSize)  &&
+      Number.isInteger(currentPage) &&
+      pageSize<20 && pageSize>0 &&
+      currentPage>0
+    ){
+      new Promise((resolve,reject)=>{
+        article.find().skip(skipnum).limit(pageSize).sort({date:-1}).exec(function(err,data){
+        if(err){
+          res.json('err')
+          reject('')
+        } else{
+          resolve(data)
+        }
+      })
+      }).then((data)=>{
+        article.find(function(err,data2){
+          if(err){
+            res.json('err')
+          } else{
+            let length = data2.length
+            let resdata={
+              data:data,
+              itemlength:length
+            }
+            res.json(resdata)
+          }
+        })
+      }).catch((err)=>{
+        console.log(err)
+      })
+
+    } else{
+      res.json('query_illegal')
+    }
+
+    
+
+    console.log(req.query)
+    // res.json(req.query)
+  } 
+
+
 
 exports.commentList = function(req, res) {
   comment.find({ articleId: req.params.id.toString() }, function(

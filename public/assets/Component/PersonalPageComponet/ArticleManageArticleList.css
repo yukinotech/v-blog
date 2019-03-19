@@ -1,0 +1,66 @@
+.item{
+    box-sizing: border-box;
+    border: 1px solid rgb(163, 138, 138);
+    height: 50px;
+    width: 120%;
+    padding: 5px 10px;
+    font-size: 14px;
+    display: flex;
+    align-items:center;
+    justify-content:space-between;
+}
+.item:hover{
+    background: #f6f8fa;
+}
+.item a{
+    color: black
+}
+.title{
+    flex: 0 0 auto;
+}
+.time{
+    margin-left: 30px;
+    width: 70px;
+    display: inline-block;
+}
+.otherblock{
+    flex: 0 0 auto;
+}
+.icon{
+    margin-left: 10px;
+}
+.liBox{
+    min-height: 500px;
+    margin-bottom: 100px;
+}
+.pageblock{
+    margin-top:10px;
+    margin-bottom:10px;
+}
+.pageItem{
+    text-align: center;
+    line-height: 30px;
+    display: inline-block;
+    margin-right: 3px;
+    height: 30px;
+    width: 30px;
+    /* background: rgb(226, 111, 111); */
+    border: 1px solid #ebebeb
+}
+.pageItem:hover{
+    color:rgb(255, 175, 1);
+    background: rgb(217, 215, 248);
+}
+.pageFirstItem{
+    width: 50px;
+}
+.pageItemSelect{
+    width: 50px;
+    color: rgb(212, 211, 211);
+}
+.pageItemSelect:hover{
+    color: rgb(212, 211, 211);
+}
+.pageLastPageItem{
+    width: 70px;
+}

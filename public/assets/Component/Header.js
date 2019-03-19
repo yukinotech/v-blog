@@ -27,7 +27,8 @@ class Header extends React.Component {
 						login: false,
 						username:null
 					});
-					alert('登出成功');
+          alert('登出成功,返回主页');
+          window.location.href='/'
         } else {
 					alert('登出失败，ajax成功');
         }
@@ -43,7 +44,7 @@ class Header extends React.Component {
     $.ajax({
       url: "/getPublicname",
       dataType: "json",
-      cache: false,
+      // cache: false,
       type: "GET",
       crossDomain: true,
       success: data => {
@@ -95,7 +96,7 @@ class Header extends React.Component {
             <a href="/">Home</a>
           </li>
           <li>
-            <a href="/publish.html">发布文章</a>
+            <a href="/publish">发布文章</a>
           </li>
           <li>
             <a href="#">历史文章</a>

@@ -118,7 +118,8 @@ class PublishBody extends React.Component {
           newArticleID = data;
           console.log(typeof newArticleID);
 
-          alert("提交成功 " + newArticleID);
+          alert("提交成功 " + newArticleID +'\n跳转回首页');
+          window.location.href='/'
           // window.location.href = '/index.html'
         }
       }
