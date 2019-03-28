@@ -17,8 +17,9 @@ class ArticleList extends React.Component {
     this.stop = this.stop.bind(this);
   }
   componentDidMount() {
+    console.log(this.state.currentPage)
     $.ajax({
-      url: "/findArticleAll?currentPage=1&pageSize=10",
+      url: "/findArticleAll?currentPage="+this.state.currentPage+"&pageSize=10",
       type: "GET",
       dataType: "json",
       success: data => {

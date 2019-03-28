@@ -99,13 +99,13 @@ class Header extends React.Component {
             <a href="/publish">发布文章</a>
           </li>
           <li>
-            <a href="#">历史文章</a>
+            <a href="javascript:0">历史文章</a>
           </li>
           <li>
-            <a href="#">浏览记录</a>
+            <a href="javascript:0">浏览记录</a>
           </li>
           <li>
-            <a href="#">关于</a>
+            <a href="javascript:0">关于</a>
           </li>
         </ul>
         <div className={style.user}>
