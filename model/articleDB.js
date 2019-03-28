@@ -6,7 +6,8 @@ var articleSchema = new mongoose.Schema(
     overview:String,
     text: String,
     date: Date,
-    author:String
+    author:String,
+    lastCommitDate:Date
   },
   { versionKey: false }
 );

@@ -88,7 +88,7 @@ class ChangeArticleBody extends React.Component {
   HaddleSubmit() {
     var data = {};
     data["title"] = this.state.data.title;
-    data["date"] = new Date();
+    data["lastCommitDate"] = new Date();
 
     // var overview = this.editor.txt.text();
     // var length = overview.length < 120 ? overview.length : 120;
