@@ -36,7 +36,7 @@ class PublishBody extends React.Component {
         title: "",
         text: "",
         overview: "",
-        date: new Date()
+        date: new Date(),
       },
       preview:{
       },
@@ -93,7 +93,7 @@ class PublishBody extends React.Component {
     var data = {};
     data["title"] = this.state.data.title;
     data["date"] = new Date();
-
+    data['lastCommitDate'] = data["date"]
     // var overview = this.editor.txt.text();
     // var length = overview.length < 120 ? overview.length : 120;
     // overview = overview.slice(0, length - 1);
@@ -120,12 +120,12 @@ class PublishBody extends React.Component {
 
           alert("提交成功 " + newArticleID +'\n跳转回首页');
           window.location.href='/'
-          // window.location.href = '/index.html'
+          
         }
       }
     });
 
-    e.preventDefault();
+    // e.preventDefault();
   }
   handleTextChange(e){
     let val =e.target.value;

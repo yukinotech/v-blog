@@ -1,2 +1,1 @@
-let delete2 = require('./test/tt')
-delete2.delete()
+console.log(parseInt(222))

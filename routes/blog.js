@@ -85,7 +85,8 @@ exports.add = function(req, res) {
     !(
       Object.prototype.hasOwnProperty.call(req.body, "title") &&
       Object.prototype.hasOwnProperty.call(req.body, "text") &&
-      Object.prototype.hasOwnProperty.call(req.body, "date")
+      Object.prototype.hasOwnProperty.call(req.body, "date") &&
+      Object.prototype.hasOwnProperty.call(req.body, "lastCommitDate")
     )
   ) {
     res.statusCode = 400;
@@ -97,7 +98,8 @@ exports.add = function(req, res) {
       text: req.body.text,
       overview: req.body.overview,
       date: req.body.date,
-      author: req.session.username
+      author: req.session.username,
+      lastCommitDate:req.body.lastCommitDate
     };
     var ArticleEntity = new article(newArticle);
     ArticleEntity.save();
@@ -113,7 +115,7 @@ exports.change = function(req, res) {
     !(
       Object.prototype.hasOwnProperty.call(req.body, "title") &&
       Object.prototype.hasOwnProperty.call(req.body, "text") &&
-      Object.prototype.hasOwnProperty.call(req.body, "date")
+      Object.prototype.hasOwnProperty.call(req.body, "lastCommitDate")
     )
   ) {
     res.statusCode = 400;
@@ -131,7 +133,7 @@ exports.change = function(req, res) {
             title: req.body.title,
             text: req.body.text,
             overview: req.body.overview,
-            date: req.body.date,
+            lastCommitDate: req.body.lastCommitDate,
             author: req.session.username
           };
           article.update(
@@ -253,7 +255,7 @@ exports.findArticleAll = function(req,res){
       currentPage>0
     ){
       new Promise((resolve,reject)=>{
-        article.find().skip(skipnum).limit(pageSize).sort({date:-1}).exec(function(err,data){
+        article.find({},['title','date','author','_id','lastCommitDate']).skip(skipnum).limit(pageSize).sort({date:-1}).exec(function(err,data){
         if(err){
           res.json('err')
           reject('')
