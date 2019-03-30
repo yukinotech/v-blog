@@ -86,7 +86,8 @@ exports.add = function(req, res) {
       Object.prototype.hasOwnProperty.call(req.body, "title") &&
       Object.prototype.hasOwnProperty.call(req.body, "text") &&
       Object.prototype.hasOwnProperty.call(req.body, "date") &&
-      Object.prototype.hasOwnProperty.call(req.body, "lastCommitDate")
+      Object.prototype.hasOwnProperty.call(req.body, "lastCommitDate") &&
+      req.body.title!==''
     )
   ) {
     res.statusCode = 400;

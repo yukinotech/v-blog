@@ -20,22 +20,26 @@
 }
 
 .markdown pre code {
-    
+  background:none;
+  color: inherit;  
   line-height: 1.42857;
   font-size: 13px;
   font-family: Menlo, Monaco, Consolas, "Andale Mono", "lucida console",
     "Courier New", monospace;
 }
+
 /* markdowm 小段代码 */
-.markdown p code{
+.markdown code{
     padding: 2px 4px;
     background-color: #f6f6f6;
     vertical-align: middle;
     border: none;
     color: #c7254e;
-    font-size: 12px;
+    /* font-size: 12px; */
     white-space: pre-wrap;
 }
+
+
 
 
 /* p,p a 段落 setting */

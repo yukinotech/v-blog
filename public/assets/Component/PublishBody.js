@@ -9,8 +9,6 @@ import '../../directOutPutCss/hljsClass.css'
 import '../../directOutPutCss/markdownCode.css'
 import "../../directOutPutCss/antd.css";
 
-
-
 marked.setOptions({
   renderer: new marked.Renderer(),
   highlight: function(code) {

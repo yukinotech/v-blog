@@ -9,11 +9,11 @@ import defaultAvatar from "../../avatar/defaultAvatar.jpg"
 import '../../directOutPutCss/hljsClass.css'
 import '../../directOutPutCss/markdownCode.css'
 
-
 marked.setOptions({
   renderer: new marked.Renderer(),
   highlight: function(code) {
-    return hljs.highlightAuto(code).value;
+    // return hljs.highlightAuto(code).value;
+    return hljs.highlight("javascript", code).value;
   },
   pedantic: false,
   gfm: true,

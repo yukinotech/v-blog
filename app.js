@@ -205,6 +205,7 @@ app.get("/author", function(req, res) {
 });
 
 app.use(function(req,res){
+    res.statusCode=404
     res.sendFile(path.join(__dirname, "dist/Page404.html"));
 })
 
